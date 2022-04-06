@@ -29,5 +29,15 @@ namespace Api.Controllers
 
             return Ok(groups);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetDetail(int id)
+        {
+            var groups = await _context.Groups.FindAsync(id);
+
+            if (groups == null) return NotFound();
+
+            return Ok(groups);
+        }
     }
 }
